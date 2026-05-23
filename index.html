@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
   <meta name="theme-color" content="#1a2a6c"/>
   <meta name="mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -29,7 +29,10 @@
       --radius: 20px;
     }
     *, *::before, *::after { box-sizing: border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
-    html, body { height:100%; overscroll-behavior: none; }
+    html, body {
+      min-height: 100%;
+      overscroll-behavior-y: contain;
+    }
     body {
       font-family: 'Nunito', sans-serif;
       background: var(--bg);
@@ -41,7 +44,11 @@
     input:focus, button:focus { outline: none; }
 
     /* ── PAGE WRAPPER ─────────────────────────────────────── */
-    .page { width:100%; max-width:520px; display:flex; flex-direction:column; min-height:100vh; }
+    .page {
+      width:100%; max-width:520px;
+      display:flex; flex-direction:column;
+      min-height:100vh;
+    }
 
     /* ── HEADER ───────────────────────────────────────────── */
     .header {
@@ -118,7 +125,11 @@
     }
 
     /* ── MAIN ─────────────────────────────────────────────── */
-    main { flex:1; width:100%; padding:26px 18px 40px; }
+    main {
+      flex:1; width:100%;
+      padding:26px 18px 40px;
+      padding-bottom: 28px;
+    }
 
     .section-title {
       font-weight:900; font-size:21px; color:var(--text); margin-bottom:5px;
@@ -189,7 +200,7 @@
     .input-hint p { font-size:12px; color:#b0bbd4; font-weight:600; line-height:1.4; }
 
     /* ── STATES ──────────────────────────────────────────── */
-    .state-area { animation:fadeIn 0.3s ease; }
+    .state-area { animation:fadeIn 0.3s ease; margin-bottom: 24px; }
     @keyframes fadeIn { from{opacity:0} to{opacity:1} }
     @keyframes slideUp {
       from{opacity:0;transform:translateY(18px)}
@@ -327,20 +338,6 @@
     .chip:active { background:rgba(26,42,108,0.15); transform:scale(0.96); }
 
     /* ── FOOTER ──────────────────────────────────────────── */
-    footer {
-      background:linear-gradient(135deg, var(--navy2), var(--navy));
-      padding:18px 20px; text-align:center; width:100%;
-    }
-    .footer-strip { display:flex; width:100%; height:3px; margin-bottom:14px; border-radius:2px; }
-    .footer-strip div { flex:1; }
-    .footer-strip .f1 { background:var(--navy); border-radius:2px 0 0 2px; }
-    .footer-strip .f2 { background:var(--white); }
-    .footer-strip .f3 { background:var(--red); border-radius:0 2px 2px 0; }
-    footer h4 {
-      font-weight:900; font-size:13px;
-      color:rgba(255,255,255,0.72); margin-bottom:3px;
-    }
-    footer p { font-size:11px; color:rgba(255,255,255,0.35); font-weight:600; }
 
     /* ── RESPONSIVE TABLET/DESKTOP ───────────────────────── */
     @media(min-width:640px) {
@@ -426,14 +423,37 @@
 
     <!-- Demo chips -->
     </div>
+  
+    <!-- Branding card inside main -->
+    <div style="
+      margin-top: 28px;
+      background: linear-gradient(135deg, #1a2a6c, #0d1b5e);
+      border-radius: 20px;
+      padding: 18px 20px 16px;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    ">
+      <!-- decorative blobs -->
+      <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.05);pointer-events:none;"></div>
+      <div style="position:absolute;bottom:-15px;left:-15px;width:60px;height:60px;border-radius:50%;background:rgba(192,57,43,0.15);pointer-events:none;"></div>
+      <!-- tricolor strip -->
+      <div style="display:flex;width:100%;height:3px;border-radius:2px;margin-bottom:14px;">
+        <div style="flex:1;background:#1a2a6c;border-radius:2px 0 0 2px;"></div>
+        <div style="flex:1;background:#fff;"></div>
+        <div style="flex:1;background:#c0392b;border-radius:0 2px 2px 0;"></div>
+      </div>
+      <p style="font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;color:rgba(255,255,255,0.80);letter-spacing:0.3px;position:relative;">
+        Luis Vidallet · Concejal · Lista 18 · Opción 1
+      </p>
+      <p style="font-family:'Nunito',sans-serif;font-weight:600;font-size:11px;color:rgba(255,255,255,0.38);margin-top:4px;position:relative;">
+        Padrón Electoral – Distrito de Limpio · 2025
+      </p>
+    </div>
+
   </main>
 
   <!-- ══ FOOTER ══════════════════════════════════════════════ -->
-  <footer>
-    <div class="footer-strip"><div class="f1"></div><div class="f2"></div><div class="f3"></div></div>
-    <h4>Luis Vidallet · Concejal · Lista 18 · Opción 1</h4>
-    <p>Padrón Electoral – Distrito de Limpio · 2025</p>
-  </footer>
 
 </div>
 
